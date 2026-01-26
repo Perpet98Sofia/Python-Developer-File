@@ -53,24 +53,34 @@ import pandas as pd
 import numpy as np
 
 data =  {
-    'Product': [ 'Apple', 'Banana', 'Cherry'],
-    'Sales': [ 100, 150, 290],
-    'Store': [ 'North', 'South', 'East']
+    'Product': [ 'Apple', 'Banana', 'Cherry', 'Apple', 'Banana', 'Cherry', 'Apple', 'Banana', 'Cherry', 'Apple', 'Banana', 'Cherry'],
+    'Sales': [ 100, 150, 290, 320, 173, 245, 121, 450, 560, 146, 230, 778],  
+    'Store': [ 'North', 'South', 'East', 'West', 'North', 'South', 'East', 'West', 'North', 'South', 'East', 'West']
 }
 
 df = pd.DataFrame(data)
-print(df)
+#print(df)
 #Data Extraction
 #iloc: Selection by integer position
-position = df.iloc[0:2, 0:2]
-print(position)
+#position = df.iloc[0:2, 0:2]
+#print(position)
 
 #iloc: Selection by label
-df.set_index('Product', inplace=True)
-price_of_banana = df.loc['Banana', 'Sales']
-print(price_of_banana)
-price_of_banana = df.iloc[1, 1]
+#df.set_index('Product', inplace=True)
+#price_of_banana = df.loc['Banana', 'Sales']
+#print(price_of_banana)
+#price_of_banana = df.iloc[1, 1]
 
+#print(df.head(1))
+#print(df.info())
+#print(df.describe())
 
+#df.loc['Apple', 'Sales'] = np.nan  #introducing NaN value for demonstration
+#print(df)
+#print(df.isnull().sum())
+#print(df.dropna()) #using df.dropna() to drop rows with NaN values
+#print(df.fillna('Unknown')) #using df.fillna() to fill NaN values with 'Unknown'
 
-
+#print(df['Product'])
+print(df[(df['Sales'] <= df['Sales'].mean()) & (df['Store']=='East')])   #including single and multiple conditions
+ 

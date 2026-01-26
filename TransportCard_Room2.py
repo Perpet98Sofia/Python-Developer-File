@@ -128,15 +128,15 @@ train_fare = trainfare()
 ferry_fare = FerryFare()
 
 #Passengers traveling
-fare1 = ferry_fare.calculate_fare("student", rides_count=20, travel_time=datetime(2026, 1, 20, 8, 0))
-print(f"Taofikat fare (student, peak): {fare1}")
-Taofikat_card.deduct(fare1)
-print(Taofikat_card.get_card_info())
-
-#fare2 = bus_fare.calculate_fare("student", distance=4)
-#print(f"Taofikat fare (student, bus, 4 stops): {fare2}")
-#Taofikat_card.deduct(fare2)
+#fare1 = ferry_fare.calculate_fare("student", rides_count=20, travel_time=datetime(2026, 1, 20, 8, 0))
+#print(f"Taofikat fare (student, peak): {fare1}")
+#Taofikat_card.deduct(fare1)
 #print(Taofikat_card.get_card_info())
+
+fare2 = bus_fare.calculate_fare("student", distance=4)
+print(f"Taofikat fare (student, bus, 4 stops): {fare2}")
+Taofikat_card.deduct(fare2)
+print(Taofikat_card.get_card_info())
 
 
 

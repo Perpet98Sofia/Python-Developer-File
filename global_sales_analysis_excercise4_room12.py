@@ -60,6 +60,7 @@ class SalesDataProcessor:
         import matplotlib.pyplot as plt
         # Convert Date column to datetime
         self.df['Date'] = pd.to_datetime(self.df['Date'])
+        print(self.df.info())
         # Resample data monthly and sum Total_Amount
         Monthly_Data = self.df.set_index('Date').resample('ME')['Total_Amount'].sum()
         # Plotting a line graph

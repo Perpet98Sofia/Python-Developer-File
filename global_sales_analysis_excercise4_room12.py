@@ -58,7 +58,7 @@ class SalesDataProcessor:
     #4.Visualisation method
     def visualize_trends(self):  #we are to visualize sales trends over time
         import matplotlib.pyplot as plt
-    # Convert Date column to datetime
+        # Convert Date column to datetime
         self.df['Date'] = pd.to_datetime(self.df['Date'])
         # Resample data monthly and sum Total_Amount
         Monthly_Data = self.df.set_index('Date').resample('ME')['Total_Amount'].sum()
@@ -67,10 +67,17 @@ class SalesDataProcessor:
         plt.plot(Monthly_Data.index, Monthly_Data.values, color='purple', marker='o', linestyle='--')
         plt.title('Monthly Revenue Trends')
         plt.xlabel('Date')
+        plt.ylabel('Total Revenue')
+        plt.grid(True)
+        plt.show()
+        plt.savefig('sales_trend.png')  #saving the plot as a PNG file
+
 #example usage:
 processor = SalesDataProcessor(r"C:\Users\Dell\Downloads\GLOBAL SALES DATA.csv")
 processor.clean_data()
 print(processor.df.head())
 print(processor.df.info())
-#volatile_category = processor.calculate_category_volatility()
-#print("Most volatile category:", volatile_category)
+volatile_category = processor.calculate_category_volatility()
+print("Most volatile category:", volatile_category)
+print("Visualizing sales trends...")
+processor.visualize_trends()

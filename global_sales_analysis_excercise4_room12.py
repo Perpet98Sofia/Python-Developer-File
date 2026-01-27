@@ -49,11 +49,11 @@ class SalesDataProcessor:
         # Identify the category with the highest standard deviation
         return most_volatile_category  #returns the most volatile category name
 
-#4. Visualisation method
+    #4.Visualisation method
     #def visualize_trends(self):  #we are to visualize sales trends over time
 
 #example usage:
-processor = SalesDataProcessor("C:\\Users\\Dell\\Downloads\\GLOBAL SALES DATA.csv")
+processor = SalesDataProcessor(r"C:\Users\Dell\Downloads\GLOBAL SALES DATA.csv")
 processor.clean_data()
 print(processor.df.head())
 print(processor.df.info())

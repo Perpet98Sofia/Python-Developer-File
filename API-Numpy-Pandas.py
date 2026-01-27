@@ -82,5 +82,5 @@ df = pd.DataFrame(data)
 #print(df.fillna('Unknown')) #using df.fillna() to fill NaN values with 'Unknown'
 
 #print(df['Product'])
-print(df[(df['Sales'] <= df['Sales'].mean()) & (df['Store']=='East')])   #including single and multiple conditions
+#print(df[(df['Sales'] <= df['Sales'].mean()) & (df['Store']=='East')])   #including single and multiple conditions
  

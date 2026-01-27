@@ -65,8 +65,8 @@ class SalesDataProcessor:
         Monthly_Data = self.df.set_index('Date').resample('ME')['Total_Amount'].sum()
         # Plotting a line graph
         plt.figure(figsize=(8, 6))
-        plt.plot(Monthly_Data.index, Monthly_Data.values, color='purple', marker='o', linestyle='--')
-        plt.title('Monthly Revenue Trends')
+        plt.plot(Monthly_Data.index, Monthly_Data.values, color='red', marker='o', linestyle='--')
+        plt.title('Sales Trends Over Time')
         plt.xlabel('Date')
         plt.ylabel('Total Revenue')
         plt.grid(True)

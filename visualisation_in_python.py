@@ -24,3 +24,4 @@ plt.xlabel('Date')
 plt.ylabel('Total Revenue')
 plt.grid(True)
 plt.show()
+plt.savefig('sales_trend.png')  #saving the plot as a PNG file

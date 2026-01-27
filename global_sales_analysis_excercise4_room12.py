@@ -14,13 +14,19 @@ class SalesDataProcessor:
     def __init__(self, file_name='global_sales_data.csv'):
         #resolve the CSV path relative to this file unless an absolute path is provided
         csv_path = Path(file_name)
-        if not csv_path.is_absolute():
-            csv_path = Path(__file__).parent / csv_path
-        if not csv_path.exists():
-            raise FileNotFoundError(f"CSV not found at {csv_path}. Provide the correct path to the file_name parameter.")
+        
+        #if path is absolute use it directly
+        if csv_path.is_absolute():
+            final_csv_path = csv_path
+        else:
+        #resolve relative to this file's directory
+            final_csv_path = Path(__file__).parent / csv_path
 
-        self.file_name = str(csv_path)
-        self.df = pd.read_csv(self.file_name)
+        if final_csv_path.exists():
+            self.file_name = str(csv_path)
+            self.df = pd.read_csv(self.file_name)
+        else:
+            raise FileNotFoundError(f"File not found: {final_csv_path}")
         #print(self.df.head())   #we have printed the first 5 rows of the dataframe
         #print(self.df.info())  #we have printed the info of the dataframe
 #The above code defines a class SalesDataProcessor that reads a CSV file into a pandas
@@ -50,8 +56,17 @@ class SalesDataProcessor:
         return most_volatile_category  #returns the most volatile category name
 
     #4.Visualisation method
-    #def visualize_trends(self):  #we are to visualize sales trends over time
-
+    def visualize_trends(self):  #we are to visualize sales trends over time
+        import matplotlib.pyplot as plt
+    # Convert Date column to datetime
+        self.df['Date'] = pd.to_datetime(self.df['Date'])
+        # Resample data monthly and sum Total_Amount
+        Monthly_Data = self.df.set_index('Date').resample('ME')['Total_Amount'].sum()
+        # Plotting a line graph
+        plt.figure(figsize=(8, 6))
+        plt.plot(Monthly_Data.index, Monthly_Data.values, color='purple', marker='o', linestyle='--')
+        plt.title('Monthly Revenue Trends')
+        plt.xlabel('Date')
 #example usage:
 processor = SalesDataProcessor(r"C:\Users\Dell\Downloads\GLOBAL SALES DATA.csv")
 processor.clean_data()

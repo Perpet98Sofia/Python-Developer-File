@@ -35,9 +35,9 @@ print(f'The accuracy of the model is: {score}')
 #new_transaction = np.array([[5, 500]])  # Example: Quantity=5, Unit_Price=500
 #prediction = model.predict(new_transaction)
 #if prediction[0] == 'Purchase':
- #   print("The model predicts this is a legitimate sale")
+#   print("The model predicts this is a legitimate sale")
 #else:
- #   print("The model predicts this is a refund transaction")
+#   print("The model predicts this is a refund transaction")
 #print(f'The prediction for the new transaction is: {prediction[0]}')
 
 #example2

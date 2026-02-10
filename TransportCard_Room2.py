@@ -140,8 +140,25 @@ print(Taofikat_card.get_card_info())
 
 
 
+#create a bank account, it will display account number, customer name and bank balace.
+class BankAccount:
+    def __init__(self, account_number, customer_name, balance =0.0):
+        self.account_number = account_number
+        self.customer_name = customer_name
+        self.balance = balance
 
+    def deposit(self, amount):
+        self.balance += amount
+        print(f"Deposit {amount},\nNew balance: {self.balance}")
 
+    def withdraw(self, amount):
+        pass
+
+    def get_balance(self):
+        return self.balance
+
+    def display_account_info(self):
+        print(f"Account Number: {self.account_number}, Name: {self.customer_name}, Balace: {self.balance}")
 
 
 
